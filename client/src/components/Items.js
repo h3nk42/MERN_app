@@ -2,12 +2,17 @@ import React, {useEffect, useState} from "react";
 import RenderItems from "./DB/RenderItems";
 import RenderActions from "./DB/RenderActions";
 import axios from "axios";
+import '../styles/BoxShadows.css'
+import { Divider } from 'antd'
+
+let messages = [];
 
 function Items () {
 
     const [items, setItems] = useState([1] )
     const [intervalIsSet, setIntervalIsSet] = useState(false)
     const [message, setMessage] = useState(null)
+    const [highestId, setHighestId] = useState(0)
 
     useEffect(() => {
         getDataFromDb();
@@ -28,21 +33,23 @@ function Items () {
     const getDataFromDb = () => {
         fetch('http://localhost:3001/api/getData')
             .then((data) => data.json())
-            .then((res) => setItems(res.data));
+            .then((res) => {
+                setItems(res.data)
+                setHighestId(Object.values(res.data).length)
+            });
     };
 
     const putDataToDB = (message) => {
-        let currentIds = items.map((data) => data.id);
-        let idToBeAdded = 0;
-        while (currentIds.includes(idToBeAdded)) {
-            ++idToBeAdded;
-        }
+
+        let idToBeAdded = highestId + 1;
+
 
         axios.post('http://localhost:3001/api/putData', {
             id: idToBeAdded,
             message: message,
         });
     };
+
 
     const deleteFromDB = (idTodelete) => {
         parseInt(idTodelete);
@@ -63,9 +70,12 @@ function Items () {
 
 
     return (
-        <div style={{boxShadow: '0 0 5px 10px #555', height: '100%', display: 'flex', flexDirection: 'row'}}>
+        <div className={'card-3'} style={{height: '100%', display: 'flex', flexDirection: 'row'}}>
             <RenderItems items={items} setItems={setItems} deleteItem={deleteFromDB}/>
-            <RenderActions handleClick={putDataToDB} message={message} setMessage={setMessage}></RenderActions>
+            <div style={{width: '1px'}}>
+                <Divider type="vertical" />
+            </div>
+            <RenderActions handleClick={putDataToDB} message={message} setMessage={setMessage} ></RenderActions>
         </div>
     )
 }

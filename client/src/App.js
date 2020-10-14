@@ -3,7 +3,6 @@ import React, {useState, useEffect} from 'react';
 import { Layout, Menu } from 'antd';
 import 'antd/dist/antd.css';
 
-
 import DbExchange from "./components/DB/DbExchange";
 import RenderItems from "./components/DB/RenderItems";
 import Items from "./components/Items";
@@ -35,7 +34,7 @@ function App() {
                     </Menu>
                 </Header>
                 <Content>
-                    <div style={{ padding: '100px 100px', height: '1000px', backgroundColor: 'white' }}>
+                    <div style={{ padding: '100px 100px', minheight: '1000px', backgroundColor: 'white' }}>
                         <div style={{ height: '100%',width:'100%', backgroundColor: colorScheme.fourth }} >
                             <Items></Items>
                         </div>

@@ -25,7 +25,7 @@ rl.question('enter password for DB!', (answer) => {
 // connects our back end code with the database
     mongoose.connect(dbRoute, {useUnifiedTopology: true, useNewUrlParser: true})
         .then( res => {})
-        .catch(error => {console.log('Falsches Passwort!')
+        .catch(error => {console.log(error)
                         process.exit()
         })
 
