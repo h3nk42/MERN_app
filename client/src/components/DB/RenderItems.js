@@ -23,6 +23,7 @@ function RenderItems (props) {
 
     const listItems = items1.map( (data) =>
         <Card
+            key={data.id}
             style={{ width: 200, margin: '0.5%' }}
             cover={
                 <img

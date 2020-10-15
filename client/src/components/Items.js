@@ -9,7 +9,7 @@ let messages = [];
 
 function Items () {
 
-    const [items, setItems] = useState([1] )
+    const [items, setItems] = useState([] )
     const [intervalIsSet, setIntervalIsSet] = useState(false)
     const [message, setMessage] = useState(null)
     const [highestId, setHighestId] = useState(0)
