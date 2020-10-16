@@ -17,7 +17,7 @@ function Items () {
     useEffect(() => {
         getDataFromDb();
         if (!intervalIsSet) {
-            let interval = setInterval(getDataFromDb, 1000);
+            let interval = setInterval(getDataFromDb, 10000);
             setIntervalIsSet(interval);
         }
         // never let a process live forever
@@ -29,9 +29,11 @@ function Items () {
             }
         }
     }, [intervalIsSet])
+//http://localhost:5001/shareyourplant-b5c9a/us-central1/app/api
 
+    //http://localhost:3001/api/getData
     const getDataFromDb = () => {
-        fetch('http://localhost:3001/api/getData')
+        fetch('https://us-central1-shareyourplant-b5c9a.cloudfunctions.net/app/api')
             .then((data) => data.json())
             .then((res) => {
                 setItems(res.data)
@@ -44,7 +46,7 @@ function Items () {
         let idToBeAdded = highestId + 1;
 
 
-        axios.post('http://localhost:3001/api/putData', {
+        axios.post('https://us-central1-shareyourplant-b5c9a.cloudfunctions.net/app/api/putData', {
             id: idToBeAdded,
             message: message,
         });
@@ -62,7 +64,7 @@ function Items () {
 
         axios({
             method: 'delete',
-            url: 'http://localhost:3001/api/deleteData',
+            url: 'https://us-central1-shareyourplant-b5c9a.cloudfunctions.net/app/api/deleteData',
             data: {id: objIdToDelete}
         });
 
