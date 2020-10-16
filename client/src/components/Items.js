@@ -17,7 +17,7 @@ function Items () {
     useEffect(() => {
         getDataFromDb();
         if (!intervalIsSet) {
-            let interval = setInterval(getDataFromDb, 10000);
+            let interval = setInterval(getDataFromDb, 1000);
             setIntervalIsSet(interval);
         }
         // never let a process live forever
