@@ -7,7 +7,7 @@ import { Divider } from 'antd'
 
 let messages = [];
 
-function Items () {
+function Items (props) {
 
     const [items, setItems] = useState([] )
     const [intervalIsSet, setIntervalIsSet] = useState(false)
@@ -15,9 +15,9 @@ function Items () {
     const [highestId, setHighestId] = useState(0)
 
     useEffect(() => {
-        getDataFromDb();
+        getDataFromDb(props.url);
         if (!intervalIsSet) {
-            let interval = setInterval(getDataFromDb, 1000);
+            let interval = setInterval(() => getDataFromDb(props.url), 1000);
             setIntervalIsSet(interval);
         }
         // never let a process live forever
@@ -28,12 +28,13 @@ function Items () {
                 setIntervalIsSet(null);
             }
         }
-    }, [intervalIsSet])
+    }, [intervalIsSet, props])
+
 //http://localhost:5001/shareyourplant-b5c9a/us-central1/app/api
 
     //http://localhost:3001/api/getData
-    const getDataFromDb = () => {
-        fetch('https://us-central1-shareyourplant-b5c9a.cloudfunctions.net/app/api')
+    const getDataFromDb = (url) => {
+        fetch(url)
             .then((data) => data.json())
             .then((res) => {
                 setItems(res.data)

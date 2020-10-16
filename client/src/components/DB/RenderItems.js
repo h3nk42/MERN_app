@@ -7,21 +7,7 @@ const { Meta } = Card
 
 function RenderItems (props) {
 
-   /*
-        Render all the items > 8
-
-   const [slicedItems, setSlicedItems] = useState(null)
-
-    const sliceUpItems = () => {
-        let numToSlice = Math.ceil(props.items.length / 8)
-        for (let i = 0; i < numToSlice; i++) {
-            setSlicedItems(slicedItems.concat(props.items.slice(0, 8)))
-        }
-    }*/
-
-    let items1 = props.items.slice(0, 8)
-
-    const listItems = items1.map( (data) =>
+    const listItems = props.items.map( (data) =>
         <Card
             key={data.id}
             style={{ width: 200, margin: '0.5%' }}

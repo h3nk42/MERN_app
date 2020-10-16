@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import HeaderElement from "./HeaderElement";
 import PlantSvg from "../img/PlantSvg";
 import Plus from "../img/Plus";
