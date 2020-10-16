@@ -6,8 +6,8 @@ import 'antd/dist/antd.css';
 import PlantSvg from "./img/PlantSvg";
 
 
-import DbExchange from "./components/DB/DbExchange";
-import RenderItems from "./components/DB/RenderItems";
+import DbExchange from "./components/plantComponents/DbExchange";
+import RenderItems from "./components/plantComponents/RenderItems";
 import Items from "./components/Items";
 import MyHeader from "./components/MyHeader";
 
@@ -68,7 +68,7 @@ function App() {
                 <Content style={{ height: '100%'}} >
                     <div className='flex flex-column items-end' style={{ padding: '100px 100px', minHeight: '100vh', backgroundColor: 'white' }}>
                         <Checkbox onChange={onChange}>devMode</Checkbox>
-                        <div style={{  height: '100%',width:'100%', backgroundColor: colorScheme.fourth }} >
+                        <div style={{  height: '100%',width:'100%', backgroundColor:'white' }} >
                             <Items url={url}/>
                         </div>
                     </div>

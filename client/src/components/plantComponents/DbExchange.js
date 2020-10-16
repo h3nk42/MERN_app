@@ -109,7 +109,7 @@ function DbExchange(props) {
         <div>
             <ul>
                 {data.length <= 0
-                    ? 'NO DB ENTRIES YET'
+                    ? 'NO plantComponents ENTRIES YET'
                     : data.map((dat) => (
                         <li style={{ padding: '10px' }} key={data.message}>
                             <span style={{ color: 'gray' }}> id: </span> {dat.id} <br />

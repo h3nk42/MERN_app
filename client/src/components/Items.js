@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
-import RenderItems from "./DB/RenderItems";
-import RenderActions from "./DB/RenderActions";
+import RenderItems from "./plantComponents/RenderItems";
+import RenderActions from "./plantComponents/RenderActions";
 import axios from "axios";
 import '../styles/BoxShadows.css'
-import { Divider } from 'antd'
+import {Button, Divider} from 'antd'
+import {CheckOutlined} from "@ant-design/icons";
 
 let messages = [];
 
@@ -13,6 +14,7 @@ function Items (props) {
     const [intervalIsSet, setIntervalIsSet] = useState(false)
     const [message, setMessage] = useState(null)
     const [highestId, setHighestId] = useState(0)
+    const [age, setAge] = useState(null)
 
     useEffect(() => {
         getDataFromDb(props.url);
@@ -48,7 +50,7 @@ function Items (props) {
 
 
         axios.post('https://us-central1-shareyourplant-b5c9a.cloudfunctions.net/app/api/putData', {
-            id: idToBeAdded,
+            id: age,
             message: message,
         });
     };
@@ -75,10 +77,10 @@ function Items (props) {
     return (
         <div className={'card-3'} style={{height: '100%', display: 'flex', flexDirection: 'row'}}>
             <RenderItems items={items} setItems={setItems} deleteItem={deleteFromDB}/>
-            <div style={{width: '1px'}}>
+            <div style={{width: '1px', backgroundColor: 'grey'}}>
                 <Divider type="vertical" />
             </div>
-            <RenderActions handleClick={putDataToDB} message={message} setMessage={setMessage} ></RenderActions>
+            <RenderActions handleClick={putDataToDB} message={message} setMessage={setMessage} setAge={setAge}></RenderActions>
         </div>
     )
 }

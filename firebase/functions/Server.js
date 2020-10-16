@@ -17,7 +17,7 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-rl.question('enter password for DB!', (answer) => {
+rl.question('enter password for plantComponents!', (answer) => {
 
 // this is our MongoDB database
     const dbRoute =

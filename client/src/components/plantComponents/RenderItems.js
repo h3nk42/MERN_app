@@ -7,14 +7,22 @@ const { Meta } = Card
 
 function RenderItems (props) {
 
+
+    const imgLinks = [
+        'https://i.ibb.co/hR0KZxL/Kisspng-swiss-cheese-plant-leaf-tropical-garden-plant-stem-5c7429221e11b9-0010663715511165781232.png',
+        'https://i.ibb.co/W5SF0WC/philo.png',
+        'https://i.ibb.co/YWg53wH/ufoplant.png'
+    ]
+
+
     const listItems = props.items.map( (data) =>
         <Card
-            key={data.id}
+            key={data._id}
             style={{ width: 200, margin: '0.5%' }}
             cover={
                 <img
                     alt="example"
-                    src='https://i.ibb.co/hR0KZxL/Kisspng-swiss-cheese-plant-leaf-tropical-garden-plant-stem-5c7429221e11b9-0010663715511165781232.png'
+                    src= {imgLinks[ data.id-1]}
                 />
             }
             actions={[
