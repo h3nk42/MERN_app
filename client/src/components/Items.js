@@ -49,7 +49,7 @@ function Items (props) {
         let idToBeAdded = highestId + 1;
 
 
-        axios.post('https://us-central1-shareyourplant-b5c9a.cloudfunctions.net/app/api/putData', {
+        axios.post(`${props.url}/putData`, {
             id: age,
             message: message,
         });
@@ -67,7 +67,7 @@ function Items (props) {
 
         axios({
             method: 'delete',
-            url: 'https://us-central1-shareyourplant-b5c9a.cloudfunctions.net/app/api/deleteData',
+            url: `${props.url}/deleteData`,
             data: {id: objIdToDelete}
         });
 
