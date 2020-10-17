@@ -30,7 +30,7 @@ function Items (props) {
                 setIntervalIsSet(null);
             }
         }
-    }, [intervalIsSet, props])
+    }, [intervalIsSet, props.url])
 
 //http://localhost:5001/shareyourplant-b5c9a/us-central1/app/api
 
@@ -40,7 +40,7 @@ function Items (props) {
             .then((data) => data.json())
             .then((res) => {
                 setItems(res.data)
-                if(firstTime) setTimeout(() => props.setLoading(false),300)
+                if(firstTime) {setTimeout(() => props.setLoading(false),300)}
             });
     };
 

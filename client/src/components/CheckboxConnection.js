@@ -14,7 +14,7 @@ const CheckboxConnection = (props) => {
             <Checkbox className='self-center' onChange={() => {
                 props.onChange()
                 setDisable(true)
-                setTimeout(() => setDisable(false),1000)
+                setTimeout(() => setDisable(false),3000)
             }}>CONNECT TO FIREBASE</Checkbox>
     )
 }
