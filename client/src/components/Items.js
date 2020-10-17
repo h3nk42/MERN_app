@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import RenderItems from "./plantComponents/RenderItems";
-import RenderActions from "./plantComponents/RenderActions";
 import axios from "axios";
 import '../styles/BoxShadows.css'
 import {Button, Divider} from 'antd'
@@ -80,10 +79,6 @@ function Items (props) {
             :
             <div className={'card-3'} style={{height: '100%', display: 'flex', flexDirection: 'row'}}>
                 <RenderItems handleClick={putDataToDB} message={message} setMessage={setMessage} age={age} setAge={setAge} items={items} setItems={setItems} deleteItem={deleteFromDB} {...props} />
-                <div style={{width: '1px', backgroundColor: 'grey'}}>
-                    <Divider type="vertical" />
-                </div>
-                <RenderActions handleClick={putDataToDB} message={message} setMessage={setMessage} age={age} setAge={setAge}></RenderActions>
             </div>
     )
 }

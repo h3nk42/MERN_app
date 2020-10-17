@@ -7,13 +7,13 @@ import Fragezeichen from "../img/Fragezeichen";
 const MyHeader = (props) => {
 
     const headerElements = [{
-        data: <PlantSvg/>,
+        data: <PlantSvg {...props}/>,
         id: 1
         }, {
-        data: <Plus/>,
+        data: <Plus {...props}/>,
         id: 2
     },
-        {data: <Fragezeichen/>,
+        {data: <Fragezeichen {...props}/>,
         id: 3
         }]
 
@@ -24,7 +24,7 @@ const MyHeader = (props) => {
         )
 
     return(
-        <div className='flex flex-row items-center justify-center' style={{height:'80px', backgroundColor: props.colorScheme.main}} >
+        <div className='flex flex-row items-center justify-center' style={{height:'80px', backgroundColor: props.colorScheme.fifth}} >
             {renderHeaderElements}
         </div>
     )

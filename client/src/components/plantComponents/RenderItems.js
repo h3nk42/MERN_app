@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-
 import {Row, Col, Button, Card, Avatar} from 'antd';
 import { DeleteOutlined, ProfileOutlined ,  EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
-import RenderActions from "./RenderActions";
-import Plus from '../../img/Plus'
 import PlantPlus from "./AddPlantComponent/PlantPlus";
 const { Meta } = Card
 
@@ -23,7 +20,7 @@ function RenderItems (props) {
     const listItems = props.items.map( (data) =>
         <Card
             key={data._id}
-            style={{ width: 200, margin: '0.5%' }}
+            style={{ width: 200, margin: '0.5%',boxShadow: '2px 2px 10px black' }}
             cover={
                 <img
                     alt="example"
@@ -43,11 +40,10 @@ function RenderItems (props) {
     )
 
     return(
-        <div style={{display: 'flex', flexDirection: 'row', alignContent: 'flex-start', flexWrap: 'wrap', padding: '2%', width: '70%', height: '100%', backgroundColor: 'white'}}>
+        <div className='flex flex-row items-center justify-center' style={{flexWrap: 'wrap', padding: '2%', width: '100%', height: '100%', backgroundColor: props.colorScheme.fifth}}>
             {listItems}
             <PlantPlus {...props} />
         </div>
-
     )
 }
 

@@ -13,6 +13,8 @@ import Items from "./components/Items";
 import MyHeader from "./components/MyHeader";
 import PlantViewComponent from "./components/plantComponents/PlantViewComponent";
 import CheckboxConnection from "./components/CheckboxConnection";
+import RadioConnection from "./components/RadioConnection";
+import MyFooter from "./components/MyFooter";
 
 const { Footer, Content } = Layout
 
@@ -30,11 +32,11 @@ function App() {
 
 
     const colorScheme = {
-                        main: '#4E6E5D',
-                        second: '#4DA167',
-                        third: '#3BC14A',
-                        fourth: '#CFCFCF',
-                        fifth: '#4D5057'
+                        main: '#264653',
+                        second: '#2a9d8f',
+                        third: '#e9c46a',
+                        fourth: '#f4a261',
+                        fifth: '#e76f51'
     }
 
 /*
@@ -61,12 +63,12 @@ function App() {
 
     const renderContent = () => {
         return plantView ?
-            <div style={{  height: '100%',width:'100%', backgroundColor:'white' }} >
-                <PlantViewComponent toggleLoading={toggleLoading} handlePlantView={handlePlantView} />
+            <div style={{  height: '100%',width:'100%', backgroundColor:colorScheme.third }} >
+                <PlantViewComponent colorScheme={colorScheme} toggleLoading={toggleLoading} handlePlantView={handlePlantView} />
             </div>
             :
-            <div className='flex flex-column items-center justify-center' style={{  height: '100%',width:'100%', backgroundColor:'white' }} >
-                <Items loading={loading} setLoading={setLoading} handlePlantView={handlePlantView} url={url}/>
+            <div className='flex flex-column items-center justify-center' style={{  height: '100%',width:'100%', backgroundColor:colorScheme.third }} >
+                <Items colorScheme={colorScheme} loading={loading} setLoading={setLoading} handlePlantView={handlePlantView} url={url}/>
             </div>
     }
 
@@ -74,8 +76,8 @@ function App() {
         setPlantView(!plantView);
     }
 
-    const onChange = () => {
-        setDevMode(!devMode)
+    const onChange = (bool) => {
+        setDevMode(bool)
         setUrl( devMode ?
             urls[0]
         :
@@ -88,13 +90,14 @@ function App() {
         <div >
             <Layout style={{minHeight: '100vh'}} >
                 <MyHeader colorScheme={colorScheme}/>
-                <Content style={{ height: '100%'}} >
-                    <div className='flex flex-column' style={{ padding: '100px 100px', minHeight: '100vh', backgroundColor: 'white' }}>
-                       <CheckboxConnection onChange={onChange}/>
+                <Content style={{ height: '100%',}} >
+                    <div className='flex flex-column' style={{ padding: '100px 100px', minHeight: '100vh', backgroundColor: colorScheme.third }}>
+                        <h2 className='self-center'>api connection</h2>
+                        <RadioConnection onChange={onChange} />
                         {renderContent()}
                     </div>
                 </Content>
-                <Footer style={{  textAlign: 'center'}} > <h3> Share your Plant   //   created by Henk van der Sloot   //   ©2020 </h3>  </Footer>
+               <MyFooter colorScheme={colorScheme}/>
             </Layout>
         </div>
     )

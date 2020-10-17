@@ -2,8 +2,8 @@ import React from 'react';
 
 import Icon from '@ant-design/icons';
 
-const Fragezeichen = () =>
-    <svg color='darkgrey' width="60px" height="60px" fill="currentColor" viewBox="0 0 39 39">
+const Fragezeichen = (props) =>
+    <svg color={props.colorScheme.main} width="60px" height="60px" fill="currentColor" viewBox="0 0 39 39">
         <path  d="M17.881,29.927c-2.49,0-4.296,1.896-4.296,4.506c0,2.539,1.825,4.453,4.244,4.453
 			c2.521,0,4.349-1.873,4.349-4.453C22.178,31.823,20.371,29.927,17.881,29.927z M17.829,36.466c-1.076,0-1.826-0.836-1.826-2.033
 			c0-1.248,0.755-2.088,1.878-2.088c1.175,0,1.878,0.781,1.878,2.088C19.759,35.688,19.02,36.466,17.829,36.466z"/>

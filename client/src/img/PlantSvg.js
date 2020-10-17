@@ -2,8 +2,8 @@ import React from 'react';
 
 import Icon from '@ant-design/icons';
 
-const PlantSvg = () =>
-		<svg color='darkgrey' width="60px" height="60px" fill="currentColor" viewBox="0 0 547 547">
+const PlantSvg = (props) =>
+		<svg color={props.colorScheme.main} width="60px" height="60px" fill="currentColor" viewBox="0 0 547 547">
 <path d='M440.669,197.002H285.22c-6.983-25.945-12.627-39.627-18.629-46.783c2.561-5.239,5.617-10.09,9.342-13.901
 		c4.029-4.153,15.842-3.188,22.255-1.743c0,0,3.07,3.441,4.864,5.078c26.24,23.88,60.499,16.351,78.179,10.856
 		C473.831,121.766,433.466,0,433.466,0c-16.421,26.625-115.59,31.833-134.846,68.244c-9.254,17.527-11.803,31.708-10.425,43.185

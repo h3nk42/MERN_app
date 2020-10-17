@@ -6,9 +6,9 @@ const HeaderElement = (props) => {
 
     const getBackgroundColor = () => {
         return hover ?
-            (props.colorScheme.second)
+            (props.colorScheme.fourth)
             :
-            (props.colorScheme.main)
+            (props.colorScheme.fifth)
     }
 
     const toggleHover = () => {

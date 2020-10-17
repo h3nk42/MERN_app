@@ -45,7 +45,7 @@ const PlantPlus = (props) => {
                 setWobbleReverse(0)}}
               className=' myDiv myDivReverse flex flex-column items-center justify-center' onMouseEnter={ toggleHover} onMouseLeave={toggleHover} onClick={handleNewPlantClickTime} style={renderStyle()}>
             <div className='flex flex-row items-center justify-center'  style={{height: '80px'}} >
-                <Plus/>
+                <Plus {...props} />
             </div>
         </div>
 
