@@ -8,6 +8,7 @@ const PlantPlus = (props) => {
 
     const [hover, setHover] = useState(false)
     const [wobble, setWobble] = useState(0)
+    const [wobbleReverse, setWobbleReverse] = useState(0)
     const [addPlantState, setAddPlantState] = useState(false)
 
     const handleNewPlantClickTime = () => {
@@ -20,6 +21,8 @@ const PlantPlus = (props) => {
 
     const handleNewPlantClick = () => {
             setAddPlantState(!addPlantState)
+            setWobble(0)
+            setWobbleReverse(1)
     }
 
     const renderStyle = () => {
@@ -31,13 +34,16 @@ const PlantPlus = (props) => {
 
     const renderContent = () => {
         return addPlantState ?
-            <div className=' myDiv flex flex-column items-center justify-center'  style={{width:'202px', height:'300px', border: '1px solid black', borderRadius: '25px'}}>
+            <div  className='flex flex-column items-center justify-center'  style={{width:'202px', height:'300px', border: '1px solid black', borderRadius: '25px', backgroundColor:'#509f58'}}>
                 <div className='flex flex-row items-center justify-center'  style={{height: '80px'}} >
                     <AddPlant handlePlantState={handleNewPlantClick} {...props} />
                 </div>
             </div>
             :
-        <div  wobble={wobble} onAnimationEnd={() => setWobble(0)} className=' myDiv flex flex-column items-center justify-center' onMouseEnter={ toggleHover} onMouseLeave={toggleHover} onClick={handleNewPlantClickTime} style={renderStyle()}>
+        <div  wobble={wobble} wobblereverse={wobbleReverse} onAnimationEnd={() =>{
+                setWobble(0)
+                setWobbleReverse(0)}}
+              className=' myDiv myDivReverse flex flex-column items-center justify-center' onMouseEnter={ toggleHover} onMouseLeave={toggleHover} onClick={handleNewPlantClickTime} style={renderStyle()}>
             <div className='flex flex-row items-center justify-center'  style={{height: '80px'}} >
                 <Plus/>
             </div>

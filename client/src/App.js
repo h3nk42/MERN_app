@@ -12,6 +12,7 @@ import RenderItems from "./components/plantComponents/RenderItems";
 import Items from "./components/Items";
 import MyHeader from "./components/MyHeader";
 import PlantViewComponent from "./components/plantComponents/PlantViewComponent";
+import CheckboxConnection from "./components/CheckboxConnection";
 
 const { Footer, Content } = Layout
 
@@ -19,10 +20,14 @@ const { Footer, Content } = Layout
 
 function App() {
 
-    const [devMode, setDevMode] = useState(false)
+    const urls = ['https://us-central1-shareyourplant-b5c9a.cloudfunctions.net/app/api', 'http://localhost:5001/shareyourplant-b5c9a/us-central1/app/api' ]
+    const [devMode, setDevMode] = useState(true)
     const [intervalIsSet, setIntervalIsSet] = useState(null)
-    const [url, setUrl] = useState('https://us-central1-shareyourplant-b5c9a.cloudfunctions.net/app/api')
+    const [url, setUrl] = useState(urls[1])
     const [plantView, setPlantView] = useState(false)
+    const [loading, setLoading] = useState(true)
+
+
 
     const colorScheme = {
                         main: '#4E6E5D',
@@ -50,14 +55,18 @@ function App() {
     })
 */
 
+    const toggleLoading = () => {
+        setLoading(!loading);
+    }
+
     const renderContent = () => {
         return plantView ?
             <div style={{  height: '100%',width:'100%', backgroundColor:'white' }} >
-                <PlantViewComponent handlePlantView={handlePlantView} />
+                <PlantViewComponent toggleLoading={toggleLoading} handlePlantView={handlePlantView} />
             </div>
             :
-            <div style={{  height: '100%',width:'100%', backgroundColor:'white' }} >
-                <Items handlePlantView={handlePlantView} url={url}/>
+            <div className='flex flex-column items-center justify-center' style={{  height: '100%',width:'100%', backgroundColor:'white' }} >
+                <Items loading={loading} setLoading={setLoading} handlePlantView={handlePlantView} url={url}/>
             </div>
     }
 
@@ -68,22 +77,20 @@ function App() {
     const onChange = () => {
         setDevMode(!devMode)
         setUrl( devMode ?
-            'https://us-central1-shareyourplant-b5c9a.cloudfunctions.net/app/api'
+            urls[0]
         :
-            'http://localhost:5001/shareyourplant-b5c9a/us-central1/app/api'
-    )
-
-
+            urls[1]
+        )
+         setLoading(true)
     }
-
 
     return (
         <div >
             <Layout style={{minHeight: '100vh'}} >
                 <MyHeader colorScheme={colorScheme}/>
                 <Content style={{ height: '100%'}} >
-                    <div className='flex flex-column items-end' style={{ padding: '100px 100px', minHeight: '100vh', backgroundColor: 'white' }}>
-                        <Checkbox onChange={onChange}>devMode</Checkbox>
+                    <div className='flex flex-column' style={{ padding: '100px 100px', minHeight: '100vh', backgroundColor: 'white' }}>
+                       <CheckboxConnection onChange={onChange}/>
                         {renderContent()}
                     </div>
                 </Content>
