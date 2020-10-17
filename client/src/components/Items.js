@@ -74,7 +74,7 @@ function Items (props) {
     return (
         props.loading ?
             <div className='flex flex-column justify-center items-center' style={{height: '800px', width: '800px'}}>
-                <LoadingOutlined style={{ fontSize: '64px', color: 'grey' }} />
+                <LoadingOutlined style={{ fontSize: '100px', color: 'white' }} />
             </div>
             :
             <div  style={{boxShadow: '9px 11px 34px 1px rgba(0,0,0,0.71)', maxWidth: '60%', height: '100%', display: 'flex', flexDirection: 'row'}}>
