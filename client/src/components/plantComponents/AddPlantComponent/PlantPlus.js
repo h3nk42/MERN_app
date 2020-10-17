@@ -27,14 +27,14 @@ const PlantPlus = (props) => {
 
     const renderStyle = () => {
         return hover ?
-            {width:'202px', height:'300px', border: '1px solid black', cursor: 'pointer', borderRadius: '25px'}
+            {width:'202px', height:'300px', cursor: 'pointer', borderRadius: '25px'}
             :
             {width:'202px', height:'300px', borderRadius: '25px'}
     }
 
     const renderContent = () => {
         return addPlantState ?
-            <div  className='flex flex-column items-center justify-center'  style={{width:'202px', height:'300px', border: '1px solid black', borderRadius: '25px', backgroundColor:'#509f58'}}>
+            <div  className='flex flex-column items-center justify-center'  style={{width:'202px', height:'300px',borderRadius: '25px', backgroundColor:props.colorScheme.fourth}}>
                 <div className='flex flex-row items-center justify-center'  style={{height: '80px'}} >
                     <AddPlant handlePlantState={handleNewPlantClick} {...props} />
                 </div>
@@ -42,8 +42,9 @@ const PlantPlus = (props) => {
             :
         <div  wobble={wobble} wobblereverse={wobbleReverse} onAnimationEnd={() =>{
                 setWobble(0)
-                setWobbleReverse(0)}}
-              className=' myDiv myDivReverse flex flex-column items-center justify-center' onMouseEnter={ toggleHover} onMouseLeave={toggleHover} onClick={handleNewPlantClickTime} style={renderStyle()}>
+                setWobbleReverse(0)
+        }}
+              className=' myDiv myDivReverse flex flex-column items-center justify-center' onMouseEnter={ () => toggleHover(true)} onMouseLeave={() => toggleHover(false)} onClick={handleNewPlantClickTime} style={renderStyle()}>
             <div className='flex flex-row items-center justify-center'  style={{height: '80px'}} >
                 <Plus {...props} />
             </div>
@@ -52,8 +53,8 @@ const PlantPlus = (props) => {
     }
 
 
-    const toggleHover = () => {
-        setHover(!hover)
+    const toggleHover = (bool) => {
+        setHover(bool)
     }
 
     return (

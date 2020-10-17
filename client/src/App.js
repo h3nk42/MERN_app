@@ -7,6 +7,7 @@ import PlantSvg from "./img/PlantSvg";
 
 
 
+
 import DbExchange from "./components/plantComponents/DbExchange";
 import RenderItems from "./components/plantComponents/RenderItems";
 import Items from "./components/Items";
@@ -63,11 +64,9 @@ function App() {
 
     const renderContent = () => {
         return plantView ?
-            <div style={{  height: '100%',width:'100%', backgroundColor:colorScheme.third }} >
                 <PlantViewComponent colorScheme={colorScheme} toggleLoading={toggleLoading} handlePlantView={handlePlantView} />
-            </div>
             :
-            <div className='flex flex-column items-center justify-center' style={{  height: '100%',width:'100%', backgroundColor:colorScheme.third }} >
+            <div className='flex flex-column items-center justify-center'  >
                 <Items colorScheme={colorScheme} loading={loading} setLoading={setLoading} handlePlantView={handlePlantView} url={url}/>
             </div>
     }
@@ -89,10 +88,10 @@ function App() {
     return (
         <div >
             <Layout style={{minHeight: '100vh'}} >
-                <MyHeader colorScheme={colorScheme}/>
+                    <MyHeader colorScheme={colorScheme}/>
                 <Content style={{ height: '100%',}} >
-                    <div className='flex flex-column' style={{ padding: '100px 100px', minHeight: '100vh', backgroundColor: colorScheme.third }}>
-                        <h2 className='self-center'>api connection</h2>
+                    <div className='flex flex-column' style={{ padding: '100px 100px', minHeight: '100vh',backgroundSize: '2300px 1080px', backgroundImage: `url('https://i.ibb.co/b5DH4nY/djnglHD.jpg')`}}>
+                        <h2 style={{color: 'white'}} className='self-center'>api connection</h2>
                         <RadioConnection onChange={onChange} />
                         {renderContent()}
                     </div>

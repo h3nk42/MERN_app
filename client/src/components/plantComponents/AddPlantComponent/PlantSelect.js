@@ -43,7 +43,7 @@ const PlantSelect = (props) =>{
     return(
         <Select
             showSearch
-            style={{ width: 200 }}
+            style={{ width: 150 }}
             placeholder="Select a species"
             optionFilterProp="children"
             onChange={onChange}

@@ -2,7 +2,7 @@
 
 
 .myDiv[wobble='1'] {
-    animation: wobble 0.5s 1;
+    animation: wobble 1s 1;
 }
 
 .myDivReverse[wobblereverse='1'] {
@@ -11,11 +11,8 @@
 }
 
 @keyframes wobble {
-    0%   {background-color: white;}
-    45%  {background-color: #a5ec8e;}
-    75%  {background-color: #ccd7c9;}
-    90%  {background-color: #709f6f;}
-    100% {background-color: #509f58;}
+    0%   {background-color: #e76f51;}
+    100% {background-color: #f4a261;}
 }
 
 

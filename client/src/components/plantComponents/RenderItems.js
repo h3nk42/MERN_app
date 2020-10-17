@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Row, Col, Button, Card, Avatar} from 'antd';
+import {Row, Col, Button, Card, Avatar, Empty} from 'antd';
 import { DeleteOutlined, ProfileOutlined ,  EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import PlantPlus from "./AddPlantComponent/PlantPlus";
 const { Meta } = Card
@@ -13,6 +13,13 @@ function RenderItems (props) {
         'https://i.ibb.co/W5SF0WC/philo.png',
         'https://i.ibb.co/YWg53wH/ufoplant.png'
     ]
+
+    const renderEmpty = () => {
+        return props.items.length>0 ?
+           <div/>
+            :
+            <Empty description={'no plants..'}/>
+    }
 
 
 
@@ -41,6 +48,7 @@ function RenderItems (props) {
 
     return(
         <div className='flex flex-row items-center justify-center' style={{flexWrap: 'wrap', padding: '2%', width: '100%', height: '100%', backgroundColor: props.colorScheme.fifth}}>
+            {renderEmpty()}
             {listItems}
             <PlantPlus {...props} />
         </div>

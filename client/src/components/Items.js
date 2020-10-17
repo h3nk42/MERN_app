@@ -77,7 +77,7 @@ function Items (props) {
                 <LoadingOutlined style={{ fontSize: '64px', color: 'grey' }} />
             </div>
             :
-            <div className={'card-3'} style={{height: '100%', display: 'flex', flexDirection: 'row'}}>
+            <div  style={{boxShadow: '9px 11px 34px 1px rgba(0,0,0,0.71)', maxWidth: '60%', height: '100%', display: 'flex', flexDirection: 'row'}}>
                 <RenderItems handleClick={putDataToDB} message={message} setMessage={setMessage} age={age} setAge={setAge} items={items} setItems={setItems} deleteItem={deleteFromDB} {...props} />
             </div>
     )
