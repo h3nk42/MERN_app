@@ -76,7 +76,7 @@ function Items (props) {
 
     return (
         <div className={'card-3'} style={{height: '100%', display: 'flex', flexDirection: 'row'}}>
-            <RenderItems items={items} setItems={setItems} deleteItem={deleteFromDB}/>
+            <RenderItems handleClick={putDataToDB} message={message} setMessage={setMessage} setAge={setAge} items={items} setItems={setItems} deleteItem={deleteFromDB} {...props} />
             <div style={{width: '1px', backgroundColor: 'grey'}}>
                 <Divider type="vertical" />
             </div>

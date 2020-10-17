@@ -6,10 +6,12 @@ import 'antd/dist/antd.css';
 import PlantSvg from "./img/PlantSvg";
 
 
+
 import DbExchange from "./components/plantComponents/DbExchange";
 import RenderItems from "./components/plantComponents/RenderItems";
 import Items from "./components/Items";
 import MyHeader from "./components/MyHeader";
+import PlantViewComponent from "./components/plantComponents/PlantViewComponent";
 
 const { Footer, Content } = Layout
 
@@ -20,6 +22,7 @@ function App() {
     const [devMode, setDevMode] = useState(false)
     const [intervalIsSet, setIntervalIsSet] = useState(null)
     const [url, setUrl] = useState('https://us-central1-shareyourplant-b5c9a.cloudfunctions.net/app/api')
+    const [plantView, setPlantView] = useState(false)
 
     const colorScheme = {
                         main: '#4E6E5D',
@@ -47,10 +50,23 @@ function App() {
     })
 */
 
+    const renderContent = () => {
+        return plantView ?
+            <div style={{  height: '100%',width:'100%', backgroundColor:'white' }} >
+                <PlantViewComponent handlePlantView={handlePlantView} />
+            </div>
+            :
+            <div style={{  height: '100%',width:'100%', backgroundColor:'white' }} >
+                <Items handlePlantView={handlePlantView} url={url}/>
+            </div>
+    }
+
+    const handlePlantView = () => {
+        setPlantView(!plantView);
+    }
+
     const onChange = () => {
-
         setDevMode(!devMode)
-
         setUrl( devMode ?
             'https://us-central1-shareyourplant-b5c9a.cloudfunctions.net/app/api'
         :
@@ -68,9 +84,7 @@ function App() {
                 <Content style={{ height: '100%'}} >
                     <div className='flex flex-column items-end' style={{ padding: '100px 100px', minHeight: '100vh', backgroundColor: 'white' }}>
                         <Checkbox onChange={onChange}>devMode</Checkbox>
-                        <div style={{  height: '100%',width:'100%', backgroundColor:'white' }} >
-                            <Items url={url}/>
-                        </div>
+                        {renderContent()}
                     </div>
                 </Content>
                 <Footer style={{  textAlign: 'center'}} > <h3> Share your Plant   //   created by Henk van der Sloot   //   ©2020 </h3>  </Footer>

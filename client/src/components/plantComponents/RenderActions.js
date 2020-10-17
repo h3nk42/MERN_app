@@ -18,8 +18,8 @@ function RenderActions (props) {
     const handleClick = () => {
        setNewPlantState(!newPlantState)
         console.log(newPlantState)
-
     }
+
 
    /* const returnButton = () => {
         return(
@@ -46,7 +46,7 @@ function RenderActions (props) {
             {
                 newPlantState ?
                     <div>
-                        <AddPlant newPlantState={newPlantState} setNewPlantState={setNewPlantState} {...props} ></AddPlant>
+                        <AddPlant handlePlantState={handleClick} {...props} ></AddPlant>
                     </div>
                     :
                     <div>

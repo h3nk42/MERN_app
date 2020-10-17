@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 
 import {Row, Col, Button, Card, Avatar} from 'antd';
-import { DeleteOutlined,  EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
+import { DeleteOutlined, ProfileOutlined ,  EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
+import RenderActions from "./RenderActions";
+import Plus from '../../img/Plus'
+import PlantPlus from "./AddPlantComponent/PlantPlus";
 const { Meta } = Card
 
 
@@ -15,6 +18,8 @@ function RenderItems (props) {
     ]
 
 
+
+
     const listItems = props.items.map( (data) =>
         <Card
             key={data._id}
@@ -26,7 +31,7 @@ function RenderItems (props) {
                 />
             }
             actions={[
-
+                <ProfileOutlined onClick={() => {props.handlePlantView()}} key="ellipsis" />,
                 <DeleteOutlined onClick={() => {props.deleteItem(data.id)}} key="ellipsis" />,
             ]}
         >
@@ -39,7 +44,8 @@ function RenderItems (props) {
 
     return(
         <div style={{display: 'flex', flexDirection: 'row', alignContent: 'flex-start', flexWrap: 'wrap', padding: '2%', width: '70%', height: '100%', backgroundColor: 'white'}}>
-                {listItems}
+            {listItems}
+            <PlantPlus {...props} />
         </div>
 
     )
