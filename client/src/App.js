@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 import { Layout, Menu, Checkbox } from 'antd';
-import Icon from '@ant-design/icons';
+import Icon, {LoadingOutlined} from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import PlantSvg from "./img/PlantSvg";
 
@@ -16,6 +16,8 @@ import PlantViewComponent from "./components/plantComponents/PlantViewComponent"
 import CheckboxConnection from "./components/CheckboxConnection";
 import RadioConnection from "./components/RadioConnection";
 import MyFooter from "./components/MyFooter";
+import './styles/ImageStyleBg.css'
+
 
 const { Footer, Content } = Layout
 
@@ -29,6 +31,7 @@ function App() {
     const [url, setUrl] = useState(urls[1])
     const [plantView, setPlantView] = useState(false)
     const [loading, setLoading] = useState(true)
+    const [imgLoading, setImgLoading] = useState(true)
 
 
 
@@ -85,21 +88,55 @@ function App() {
          setLoading(true)
     }
 
+    const returnHiddenStyle = () => {
+        return imgLoading ?
+            {display: 'none'}
+            :
+            {}
+    }
+
+    const returnLoadingPage = () => {
+        return imgLoading ?
+        <div className='flex flex-column item-center justify-center' style={{ height:'100vh', width: '100vw', backgroundColor: 'white'}}>
+            <LoadingOutlined style={{ fontSize: '100px', color: 'black' }} />
+        </div>
+            :
+            <div></div>
+    }
+
     return (
-        <div >
-            <Layout style={{minHeight: '100vh'}} >
-                    <MyHeader colorScheme={colorScheme}/>
-                <Content style={{ height: '100%',}} >
-                    <div className='flex flex-column' style={{ padding: '100px 100px', minHeight: '100vh',backgroundSize: '2300px 1080px', backgroundImage: `url('https://i.ibb.co/b5DH4nY/djnglHD.jpg')`}}>
-                        <h2 style={{color: 'white'}} className='self-center'>api connection</h2>
-                        <RadioConnection onChange={onChange} />
-                        {renderContent()}
-                    </div>
-                </Content>
-               <MyFooter colorScheme={colorScheme}/>
-            </Layout>
+        <div>
+            {returnLoadingPage()}
+            <div style={returnHiddenStyle()}>
+                <Layout style={{minHeight: '100vh'}} >
+                        <MyHeader colorScheme={colorScheme}/>
+                    <Content style={{ height: '100%',}} >
+                        <div className='backgroundDiv' >
+                            <img
+                                src={'https://i.ibb.co/b5DH4nY/djnglHD.jpg'}
+                                alt={'https://i.ibb.co/b5DH4nY/djnglHD.jpg'}
+                                className='backgroundImg'
+                                onLoad={()=>{console.log('loading done')
+                                    setImgLoading(false)}}
+                        />
+                            <div className='flex flex-column' style={{ padding: '100px 100px', minHeight: '100vh',backgroundSize: '2300px 1080px', backgroundImage: `url('https://i.ibb.co/b5DH4nY/djnglHD.jpg')`}}>
+
+                                <h2 style={{color: 'white'}} className='self-center'>api connection</h2>
+                                <RadioConnection onChange={onChange} />
+                                {renderContent()}
+                            </div>
+                        </div>
+                    </Content>
+                   <MyFooter colorScheme={colorScheme}/>
+                </Layout>
+            </div>
         </div>
     )
 }
+
+//onLoad={() => {
+//                         console.log('loading done')
+//                         setImgLoading(false)
+//                     }}
 
 export default App;
