@@ -2,9 +2,10 @@ import React, {useEffect, useState} from "react";
 import RenderItems from "./plantComponents/RenderItems";
 import axios from "axios";
 import '../styles/BoxShadows.css'
-import {Button, Divider} from 'antd'
+import { message as messagePopup }  from 'antd'
 import {CheckOutlined, LoadingOutlined } from "@ant-design/icons";
 import PlantPlus from "./plantComponents/AddPlantComponent/PlantPlus";
+
 
 let messages = [];
 
@@ -18,25 +19,18 @@ function Items (props) {
 
     useEffect(() => {
         getDataFromDb(props.url, true);
-        if (!intervalIsSet) {
-            let interval = setInterval(() => getDataFromDb(props.url,false), 1000);
-            setIntervalIsSet(interval);
-        }
-        // never let a process live forever
-        // always kill a process everytime we are done using it
-        return function cleanUp() {
-            if (intervalIsSet) {
-                clearInterval(intervalIsSet);
-                setIntervalIsSet(null);
-            }
-        }
-    }, [intervalIsSet, props.url])
+       if(props.socket != null) {
+            props.socket.on("dbUpdated", data => {
+                getDataFromDb(props.url, true);
+                messagePopup.info(`db update: ${data}`)
+            });
+       }
+    }, [intervalIsSet, props.url, props.socket])
 
-//http://localhost:5001/shareyourplant-b5c9a/us-central1/app/api
 
     //http://localhost:3001/api/getData
     const getDataFromDb = (url, firstTime) => {
-        fetch(url+"/getData")
+        fetch(url+"api/getData")
             .then((data) => data.json())
             .then((res) => {
                 setItems(res.data)
@@ -45,7 +39,7 @@ function Items (props) {
     };
 
     const putDataToDB = (message) => {
-        axios.post(`${props.url}/putData`, {
+        axios.post(`${props.url}api/putData`, {
             id: age,
             message: message,
         });
@@ -65,7 +59,7 @@ function Items (props) {
 
         axios({
             method: 'delete',
-            url: `${props.url}/deleteData`,
+            url: `${props.url}api/deleteData`,
             data: {id: objIdToDelete}
         });
     };

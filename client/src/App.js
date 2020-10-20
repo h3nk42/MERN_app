@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-
+import socketIOClient from "socket.io-client";
 import { Layout, Menu, Checkbox } from 'antd';
 import Icon, {LoadingOutlined} from '@ant-design/icons';
 import 'antd/dist/antd.css';
@@ -24,15 +24,21 @@ const { Footer, Content } = Layout
 
 
 function App() {
-
-    const urls = ['https://shareyourplant.herokuapp.com/api', 'http://localhost:5001/shareyourplant-b5c9a/us-central1/app/api' ]
+//https://shareyourplant.herokuapp.com/api'http://localhost:3001/
+    const urls = ['https://shareyourplant.herokuapp.com/', 'http://localhost:5001/shareyourplant-b5c9a/us-central1/app/api' ]
     const [devMode, setDevMode] = useState(false)
     const [intervalIsSet, setIntervalIsSet] = useState(null)
     const [url, setUrl] = useState(urls[0])
     const [plantView, setPlantView] = useState(false)
     const [loading, setLoading] = useState(true)
     const [imgLoading, setImgLoading] = useState(true)
+    const [socket, setSocket] = useState(null)
 
+    useEffect(() => {
+        const sock = socketIOClient(url)
+        setSocket(sock)
+        return function cleanUp() {socket.disconnect(); }
+    },[])
 
 
     const colorScheme = {
@@ -43,23 +49,6 @@ function App() {
                         fifth: '#e76f51'
     }
 
-/*
-    useEffect(() => {
-        if (!intervalIsSet) {
-            let interval = setInterval(() => {
-                console.log(devMode)
-                console.log(url)
-            }, 1000);
-            setIntervalIsSet(interval);
-        }
-        return function cleanUp() {
-            if (intervalIsSet) {
-                clearInterval(intervalIsSet);
-                setIntervalIsSet(null);
-            }
-        }
-    })
-*/
 
     const toggleLoading = () => {
         setLoading(!loading);
@@ -70,7 +59,7 @@ function App() {
                 <PlantViewComponent colorScheme={colorScheme} toggleLoading={toggleLoading} handlePlantView={handlePlantView} />
             :
             <div className='flex flex-column items-center justify-center'  >
-                <Items colorScheme={colorScheme} loading={loading} setLoading={setLoading} handlePlantView={handlePlantView} url={url}/>
+                <Items socket={socket} colorScheme={colorScheme} loading={loading} setLoading={setLoading} handlePlantView={handlePlantView} url={url}/>
             </div>
     }
 

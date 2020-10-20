@@ -4,13 +4,23 @@ let cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const Data = require('./data');
-const readline = require('readline')
+const http = require('http')
+const socketIo = require('socket.io')
+
+const events = require('events');
+
 
 const password = require('./pw/pw.json');
 
 
 const API_PORT = process.env.PORT || 3001;
 const app = express();
+const server = http.createServer(app);
+const io = socketIo(server);
+
+
+const eventEmitter = new events.EventEmitter();
+
 app.use(cors());
 const router = express.Router();
 
@@ -39,6 +49,13 @@ const router = express.Router();
     app.use(bodyParser.json());
     app.use(logger('dev'));
 
+
+io.on('connection', (socket) => {
+    console.log('new connection!');
+    eventEmitter.on('update', (message) => socket.emit("dbUpdated", message))
+})
+
+
 // this is our get method
 // this method fetches all available data in our database
 
@@ -57,6 +74,7 @@ const router = express.Router();
 // this method overwrites existing data in our database
     router.post('/updateData', (req, res) => {
         const {id, update} = req.body;
+        eventEmitter.emit('update', 'update');
         Data.findByIdAndUpdate(id, update, (err) => {
             if (err) return res.json({success: false, error: err});
             return res.json({success: true});
@@ -67,6 +85,7 @@ const router = express.Router();
 // this method removes existing data in our database
     router.delete('/deleteData', (req, res) => {
         const {id} = req.body;
+        eventEmitter.emit('update', 'delete');
         Data.findByIdAndRemove(id, (err) => {
             if (err) return res.send(err);
             return res.json({success: true});
@@ -77,7 +96,7 @@ const router = express.Router();
 // this method adds new data in our database
     router.post('/putData', (req, res) => {
         let data = new Data();
-
+        eventEmitter.emit('update', 'post');
         const {id, message} = req.body;
 
         if ((!id && id !== 0) || !message) {
@@ -97,7 +116,9 @@ const router = express.Router();
 // append /api for our http requests
     app.use('/api', router);
 
+
 // launch our backend into a port
-    app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
+    server.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
+
 
 
