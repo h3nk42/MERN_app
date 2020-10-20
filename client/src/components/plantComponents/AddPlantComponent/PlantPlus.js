@@ -27,14 +27,14 @@ const PlantPlus = (props) => {
 
     const renderStyle = () => {
         return hover ?
-            {width:'202px', height:'300px', cursor: 'pointer', borderRadius: '25px'}
+            {width:'202px', height:'200px', cursor: 'pointer', borderRadius: '100px'}
             :
-            {width:'202px', height:'300px', borderRadius: '25px'}
+            {width:'202px', height:'200px', borderRadius: '100px'}
     }
 
     const renderContent = () => {
         return addPlantState ?
-            <div  className='flex flex-column items-center justify-center'  style={{width:'202px', height:'300px',borderRadius: '25px', backgroundColor:props.colorScheme.fourth}}>
+            <div  className='flex flex-column items-center justify-center'  style={{width:'202px', height:'200px',borderRadius: '100px', backgroundColor:props.colorScheme.fourth}}>
                 <div className='flex flex-row items-center justify-center'  style={{height: '80px'}} >
                     <AddPlant handlePlantState={handleNewPlantClick} {...props} />
                 </div>
@@ -46,7 +46,7 @@ const PlantPlus = (props) => {
         }}
               className=' myDiv myDivReverse flex flex-column items-center justify-center' onMouseEnter={ () => toggleHover(true)} onMouseLeave={() => toggleHover(false)} onClick={handleNewPlantClickTime} style={renderStyle()}>
             <div className='flex flex-row items-center justify-center'  style={{height: '80px'}} >
-                <Plus {...props} />
+                <Plus color={'white'}{...props} />
             </div>
         </div>
 

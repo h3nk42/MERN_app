@@ -11,7 +11,7 @@ const MyHeader = (props) => {
         data: <PlantSvg {...props}/>,
         id: 1
         }, {
-        data: <Plus {...props}/>,
+        data: <Plus color={props.colorScheme.main} {...props}/>,
         id: 2
     },
         {data: <Fragezeichen {...props}/>,

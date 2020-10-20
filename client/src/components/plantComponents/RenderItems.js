@@ -9,10 +9,9 @@ function RenderItems (props) {
 
 
     const imgLinks = [
-        'https://i.ibb.co/hR0KZxL/Kisspng-swiss-cheese-plant-leaf-tropical-garden-plant-stem-5c7429221e11b9-0010663715511165781232.png',
-        'https://i.ibb.co/W5SF0WC/philo.png',
-        'https://i.ibb.co/YWg53wH/ufoplant.png'
-    ]
+        'https://i.ibb.co/1JF6wrY/monstera.png',
+        'https://i.ibb.co/pKbJxQV/philo.png',
+        "https://i.ibb.co/fY2wB9m/ufoplant.png", ]
 
     const renderEmpty = () => {
         return props.items.length>0 ?
@@ -47,11 +46,12 @@ function RenderItems (props) {
     )
 
     return(
-        <div className='flex flex-row items-center justify-center' style={{flexWrap: 'wrap', padding: '2%', width: '100%', height: '100%', backgroundColor: props.colorScheme.fifth}}>
+        <div className='flex flex-row items-start justify-center' style={{flexWrap: 'wrap', padding: '2%', width: '645px', height: '100%', backgroundColor: props.colorScheme.fifth}}>
             {renderEmpty()}
             {listItems}
-            <PlantPlus {...props} />
         </div>
+
+
     )
 }
 

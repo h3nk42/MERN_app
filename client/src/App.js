@@ -25,10 +25,10 @@ const { Footer, Content } = Layout
 
 function App() {
 
-    const urls = ['https://us-central1-shareyourplant-b5c9a.cloudfunctions.net/app/api', 'http://localhost:5001/shareyourplant-b5c9a/us-central1/app/api' ]
-    const [devMode, setDevMode] = useState(true)
+    const urls = ['https://shareyourplant.herokuapp.com/api', 'http://localhost:5001/shareyourplant-b5c9a/us-central1/app/api' ]
+    const [devMode, setDevMode] = useState(false)
     const [intervalIsSet, setIntervalIsSet] = useState(null)
-    const [url, setUrl] = useState(urls[1])
+    const [url, setUrl] = useState(urls[0])
     const [plantView, setPlantView] = useState(false)
     const [loading, setLoading] = useState(true)
     const [imgLoading, setImgLoading] = useState(true)
@@ -120,9 +120,7 @@ function App() {
                                     setImgLoading(false)}}
                         />
                             <div className='flex flex-column' style={{ padding: '100px 100px', minHeight: '100vh',backgroundSize: '2300px 1080px', backgroundImage: `url('https://i.ibb.co/b5DH4nY/djnglHD.jpg')`}}>
-
-                                <h2 style={{color: 'white'}} className='self-center'>api connection</h2>
-                                <RadioConnection onChange={onChange} />
+                                <h2 style={{color: 'white'}} className='self-center'>connected to heroku!</h2>
                                 {renderContent()}
                             </div>
                         </div>

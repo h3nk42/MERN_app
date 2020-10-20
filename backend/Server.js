@@ -6,22 +6,18 @@ const logger = require('morgan');
 const Data = require('./data');
 const readline = require('readline')
 
+const password = require('./pw/pw.json');
 
-const API_PORT = 3001;
+
+const API_PORT = process.env.PORT || 3001;
 const app = express();
 app.use(cors());
 const router = express.Router();
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
-rl.question('enter password for plantComponents!', (answer) => {
 
 // this is our MongoDB database
     const dbRoute =
-        `mongodb+srv://Neekh:${answer}@cluster0.cmyhk.mongodb.net/Cluster0?retryWrites=true&w=majority`;
+        `mongodb+srv://Neekh:${password.pw}@cluster0.cmyhk.mongodb.net/Cluster0?retryWrites=true&w=majority`;
 
 // connects our back end code with the database
     mongoose.connect(dbRoute, {useUnifiedTopology: true, useNewUrlParser: true})
@@ -103,5 +99,5 @@ rl.question('enter password for plantComponents!', (answer) => {
 
 // launch our backend into a port
     app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
-    rl.close()
-})
+
+
