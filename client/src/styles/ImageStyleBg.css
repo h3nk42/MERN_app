@@ -8,8 +8,21 @@
     z-index: -1;
 }
 .backgroundDiv {
-    display: inline-block;
     overflow: hidden;
-    position: relative;
     width: 100%;
+}
+
+
+.wrappingContainer {
+    height: 100%;
+    width: 100%;
+    overflow-y: visible;
+    /* Set the height to match that of the viewport. */
+    height: 100vh;
+
+    /* Set the width to match that of the viewport. */
+
+
+    /* Remove any browser-default margins. */
+    margin: 0;
 }

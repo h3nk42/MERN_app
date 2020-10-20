@@ -22,7 +22,7 @@ function Items (props) {
        if(props.socket != null) {
             props.socket.on("dbUpdated", data => {
                 getDataFromDb(props.url, true);
-                messagePopup.info(`db update: ${data}`)
+                messagePopup.info(`db update: ${data}`)``
             });
        }
     }, [intervalIsSet, props.url, props.socket])
