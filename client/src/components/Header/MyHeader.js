@@ -20,19 +20,23 @@ const MyHeader = (props) => {
 
     const headerElements = [{
         data: <h2 style={{color: 'white'}}> HOME </h2>,
-        id: 1
+        id: 1,
+        route: '/'
     }, {
-        data: <h2 style={{color: 'white'}}> CONTACT </h2>,
-        id: 2
+        data: <h2 style={{color: 'white'}}> API </h2>,
+        id: 2,
+        route: 'api'
     },
-        {data: <h2 style={{color: 'white'}}> DNTKNW </h2>,
-            id: 3
+        {
+            data: <h2 style={{color: 'white'}}> DNTKNW </h2>,
+            id: 3,
+            route: 'dntknw'
     }]
 
 
     const renderHeaderElements =
         headerElements.map( (e) =>
-        <HeaderElement key={e.id} val = {e.data} {...props} />
+        <HeaderElement key={e.id} val = {e.data} route={e.route} {...props} />
         )
 
     return(

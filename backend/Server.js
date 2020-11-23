@@ -22,6 +22,7 @@ const io = socketIo(server);
 const eventEmitter = new events.EventEmitter();
 
 app.use(cors());
+
 const router = express.Router();
 
 

@@ -24,7 +24,7 @@ function App() {
 
     useEffect(() => {
         setSocket(socketIOClient(url))
-        return function cleanUp() {socket.disconnect(); }
+        return function cleanUp() { if (socket) socket.disconnect(); }
     },[])
 
     const colorScheme = {main: '#264653',

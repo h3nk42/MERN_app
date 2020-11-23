@@ -1,8 +1,10 @@
 import React, {useState} from 'react'
+import { useHistory }  from 'react-router-dom'
 
 const HeaderElement = (props) => {
     const [hover, setHover] = useState(false)
 
+    const history = useHistory()
 
     const getBackgroundColor = () => {
         return hover ?
@@ -20,6 +22,7 @@ const HeaderElement = (props) => {
         <div
             onMouseEnter={ toggleHover}
             onMouseLeave={toggleHover}
+            onClick={ () => { history.push(`/${props.route}`) }}
             key={props.val}
             className=' flex flex-row justify-center items-center'
             style={{
