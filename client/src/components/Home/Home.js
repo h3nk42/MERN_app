@@ -3,16 +3,16 @@ import socketIOClient from "socket.io-client";
 import { Layout } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
-import './styles/ImageStyleBg.css'
-import Items from "./components/Items";
-import MyHeader from "./components/Header/MyHeader";
-import PlantViewComponent from "./components/plantComponents/PlantViewComponent";
-import MyFooter from "./components/Footer/MyFooter";
+import '../../styles/ImageStyleBg.css'
+import Items from "../Items";
+import Header from "../Header/Header";
+import PlantViewComponent from "./PlantViewComponent";
+import MyFooter from "../Footer/MyFooter";
 const { Content } = Layout
 
 
 
-function App() {
+function Home() {
 //https://shareyourplant.herokuapp.com/api'http://localhost:3001/
     const urls = ['https://shareyourplant.herokuapp.com/', 'http://localhost:5001/shareyourplant-b5c9a/us-central1/app/api' ]
     const [devMode, setDevMode] = useState(false)
@@ -28,12 +28,10 @@ function App() {
     },[])
 
     const colorScheme = {main: '#264653',
-                        second: '#2a9d8f',
-                        third: '#e9c46a',
-                        fourth: '#f4a261',
-                        fifth: '#e76f51' }
-
-
+        second: '#2a9d8f',
+        third: '#e9c46a',
+        fourth: '#f4a261',
+        fifth: '#e76f51' }
 
     const renderContent = () => {
         return plantView ?
@@ -115,7 +113,7 @@ function App() {
                                 backgroundSize: '3000px 2000px',
                                 backgroundImage: `url('https://i.ibb.co/b5DH4nY/djnglHD.jpg')`}}>
 
-                                    <MyHeader colorScheme={colorScheme}/>
+                                    <Header colorScheme={colorScheme}/>
                                 <div style={{
                                     padding: '5% 5%',
                                     marginBottom: 'auto'}}>
@@ -136,4 +134,4 @@ function App() {
 //                         setImgLoading(false)
 //                     }}
 
-export default App;
+export default Home;

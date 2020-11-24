@@ -1,11 +1,11 @@
 import React from 'react'
 import HeaderElement from "./HeaderElement";
-import PlantSvg from "../../img/PlantSvg";
-import Plus from "../../img/Plus";
-import Fragezeichen from "../../img/Fragezeichen";
+import PlantSvg from "../../Assets/img/PlantSvg";
+import Plus from "../../Assets/img/Plus";
+import Fragezeichen from "../../Assets/img/Fragezeichen";
 import '../../styles/BoxShadows.css'
 
-const MyHeader = (props) => {
+const Header = (props) => {
 
 /*    const headerElements = [{
         data: <PlantSvg {...props}/>,
@@ -21,17 +21,27 @@ const MyHeader = (props) => {
     const headerElements = [{
         data: <h2 style={{color: 'white'}}> HOME </h2>,
         id: 1,
-        route: '/'
+        route: ''
     }, {
         data: <h2 style={{color: 'white'}}> API </h2>,
         id: 2,
         route: 'api'
     },
         {
-            data: <h2 style={{color: 'white'}}> DNTKNW </h2>,
+            data: <h2 style={{color: 'white'}}> Felix </h2>,
             id: 3,
-            route: 'dntknw'
-    }]
+            route: 'Felix'
+    },
+        {
+            data: <h2 style={{color: 'white'}}> Sunan </h2>,
+            id: 3,
+            route: 'Sunan'
+        },
+        {
+            data: <h2 style={{color: 'white'}}> Franzi </h2>,
+            id: 3,
+            route: 'Franzi'
+        }]
 
 
     const renderHeaderElements =
@@ -54,4 +64,4 @@ const MyHeader = (props) => {
 
 }
 
-export default MyHeader
+export default Header

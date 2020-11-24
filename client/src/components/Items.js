@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
-import RenderItems from "./plantComponents/RenderItems";
+import RenderItems from "./Home/RenderItems";
 import axios from "axios";
 import '../styles/BoxShadows.css'
 import { message as messagePopup }  from 'antd'
 import {CheckOutlined, LoadingOutlined } from "@ant-design/icons";
-import PlantPlus from "./plantComponents/AddPlantComponent/PlantPlus";
+import PlantPlus from "./Home/AddPlantComponent/PlantPlus";
 
 
 let messages = [];

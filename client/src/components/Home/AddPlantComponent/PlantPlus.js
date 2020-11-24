@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import Plus from "../../../img/Plus";
+import Plus from "../../../Assets/img/Plus";
 import '../../../styles/ripple.css'
 import AddPlant from "./AddPlant";
 
