@@ -4,7 +4,7 @@ import { Layout } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import '../../styles/ImageStyleBg.css'
-import Items from "../Items";
+import Items from "./Items";
 import Header from "../Header/Header";
 import PlantViewComponent from "./PlantViewComponent";
 import MyFooter from "../Footer/MyFooter";
@@ -113,7 +113,7 @@ function Home() {
                                 backgroundSize: '3000px 2000px',
                                 backgroundImage: `url('https://i.ibb.co/b5DH4nY/djnglHD.jpg')`}}>
 
-                                    <Header colorScheme={colorScheme}/>
+                                    <Header shadow={true} colorScheme={colorScheme}/>
                                 <div style={{
                                     padding: '5% 5%',
                                     marginBottom: 'auto'}}>

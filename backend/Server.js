@@ -4,8 +4,9 @@ let cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const Data = require('./data');
-const http = require('http')
-const socketIo = require('socket.io')
+const http = require('http');
+const socketIo = require('socket.io');
+const fetch = require('node-fetch');
 
 const events = require('events');
 
@@ -13,7 +14,7 @@ const events = require('events');
 const password = require('./pw/pw.json');
 
 
-const API_PORT = process.env.PORT || 3001;
+const API_PORT = process.env.PORT || 3002;
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
@@ -71,6 +72,15 @@ io.on('connection', (socket) => {
         });
     });
 
+// this a get Method to fetch data from plan API
+
+router.get('/getPlantData', async (req, res) => {
+    const response = await fetch('https://trefle.io/api/v1/plants?token=waObsZTo6jbijALEzYVHjB74AcoSTeDOHsVCm-SaOLg').catch(err => {console.log(err);  return res.json({success: false, error: err});});
+    const toJson = await response.json();
+    console.log(toJson)
+    return res.json( {success: true, data: toJson})
+});
+
 // this is our update method
 // this method overwrites existing data in our database
     router.post('/updateData', (req, res) => {
@@ -119,7 +129,9 @@ io.on('connection', (socket) => {
 
 
 // launch our backend into a port
-    server.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
+    server.listen(API_PORT, () => {
+            console.log(`LISTENING ON PORT ${API_PORT}`)
+    });
 
 
 

@@ -34,15 +34,30 @@ const Header = (props) => {
     },
         {
             data: <h2 style={{color: 'white'}}> Sunan </h2>,
-            id: 3,
+            id: 4,
             route: 'Sunan'
         },
         {
             data: <h2 style={{color: 'white'}}> Franzi </h2>,
-            id: 3,
+            id: 5,
             route: 'Franzi'
         }]
 
+    let returnShadow = () => {
+        return props.shadow ?
+            {
+                boxShadow: '-2px 19px 39px 34px rgba(0,0,0,1)',
+                height: '80px',
+                width: '100vw'
+            }
+        :
+            {
+
+                height: '80px',
+                width: '100vw'
+            }
+
+    }
 
     const renderHeaderElements =
         headerElements.map( (e) =>
@@ -52,11 +67,7 @@ const Header = (props) => {
     return(
         <div
             className='flex flex-row items-center justify-center'
-            style={{
-                boxShadow: '-2px 19px 39px 34px rgba(0,0,0,1)',
-                height:'80px',
-                width: '100vw'
-                }}>
+            style={returnShadow()}>
 
             {renderHeaderElements}
         </div>

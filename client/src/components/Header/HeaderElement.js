@@ -27,8 +27,8 @@ const HeaderElement = (props) => {
             className=' flex flex-row justify-center items-center'
             style={{
                 cursor: 'pointer' ,
-                marginLeft: '10%',
-                marginRight: '10%',
+                marginLeft: '4%',
+                marginRight: '4%',
                 height: 'auto',
                 width: '100%',
                 backgroundColor: getBackgroundColor() }}>
