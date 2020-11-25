@@ -10,6 +10,8 @@ const Forest = require('../../../Assets/img/ForestFoggy.jpg')
 const ApiLanding = (props) => {
     const history = useHistory();
 
+    const url = 'https://shareyourplant.herokuapp.com/';
+
 
     let [imgLoading, setImgLoading] = useState(true);
     let [windowWidth, setWindowWidth] = useState(0);
@@ -42,10 +44,12 @@ const ApiLanding = (props) => {
         backgroundDiv: {
         overflow: 'hidden',
         width:'100%',
+            height: '100%'
     },
         FontStyle: {
-            fontFamily: 'Anton',
+            fontFamily: 'Modak',
             fontSize: '80px',
+            fontWeight: '400',
             paddingLeft: windowWidth/9,
             color: '#E5D4ED',
             textShadow: '3px 3px 20px #000',
@@ -54,24 +58,29 @@ const ApiLanding = (props) => {
             background:    '#15d798',
             borderRadius: '1000px',
             boxShadow:    '2px 2px #444444',
-            padding:       '20px 45px',
             color:         '#ffffff',
-            display:       'inline-block',
+            paddingTop: '10px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
             fontFamily:    'Anton',
-            textAlign:    'center',
+            fontSize: (windowWidth/25)-100,
             width: windowWidth/5,
+            height: windowWidth/26,
+            minHeight: '45px',
             marginLeft: windowWidth/8,
         },
         buttonStyleHovered: {
             background:    '#15d766',
             borderRadius: '1000px',
             boxShadow:    '2px 2px #444444',
-            padding:       '20px 45px',
             color:         '#ffffff',
-            display:       'inline-block',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
             fontFamily:    'Anton',
-            textAlign:    'center',
             width: windowWidth/5,
+            height: windowWidth/26,
             marginLeft: windowWidth/8,
         }
     }
@@ -125,7 +134,7 @@ const ApiLanding = (props) => {
                             </div>
                             :
                             <div>
-                                <ShowPlantData width={windowWidth} height={windowHeight}></ShowPlantData>
+                                <ShowPlantData width={windowWidth} height={windowHeight} url={url}></ShowPlantData>
                             </div>
                         }
                         </div>

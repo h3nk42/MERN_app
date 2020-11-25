@@ -1,25 +1,26 @@
 {
   "files": {
-    "main.css": "/ShareYourPlant/static/css/main.d0cb2cb0.chunk.css",
-    "main.js": "/ShareYourPlant/static/js/main.8cf11ab0.chunk.js",
-    "main.js.map": "/ShareYourPlant/static/js/main.8cf11ab0.chunk.js.map",
+    "main.css": "/ShareYourPlant/static/css/main.44a65624.chunk.css",
+    "main.js": "/ShareYourPlant/static/js/main.d9e2f40b.chunk.js",
+    "main.js.map": "/ShareYourPlant/static/js/main.d9e2f40b.chunk.js.map",
     "runtime-main.js": "/ShareYourPlant/static/js/runtime-main.efe413ba.js",
     "runtime-main.js.map": "/ShareYourPlant/static/js/runtime-main.efe413ba.js.map",
     "static/css/2.e10332d9.chunk.css": "/ShareYourPlant/static/css/2.e10332d9.chunk.css",
-    "static/js/2.46db7ea1.chunk.js": "/ShareYourPlant/static/js/2.46db7ea1.chunk.js",
-    "static/js/2.46db7ea1.chunk.js.map": "/ShareYourPlant/static/js/2.46db7ea1.chunk.js.map",
+    "static/js/2.5e17764b.chunk.js": "/ShareYourPlant/static/js/2.5e17764b.chunk.js",
+    "static/js/2.5e17764b.chunk.js.map": "/ShareYourPlant/static/js/2.5e17764b.chunk.js.map",
     "index.html": "/ShareYourPlant/index.html",
-    "precache-manifest.ba7333f16276b0f3524ab0844dc63aa8.js": "/ShareYourPlant/precache-manifest.ba7333f16276b0f3524ab0844dc63aa8.js",
+    "precache-manifest.488e70924d2e7314794d13d0e105642d.js": "/ShareYourPlant/precache-manifest.488e70924d2e7314794d13d0e105642d.js",
     "service-worker.js": "/ShareYourPlant/service-worker.js",
     "static/css/2.e10332d9.chunk.css.map": "/ShareYourPlant/static/css/2.e10332d9.chunk.css.map",
-    "static/css/main.d0cb2cb0.chunk.css.map": "/ShareYourPlant/static/css/main.d0cb2cb0.chunk.css.map",
-    "static/js/2.46db7ea1.chunk.js.LICENSE.txt": "/ShareYourPlant/static/js/2.46db7ea1.chunk.js.LICENSE.txt"
+    "static/css/main.44a65624.chunk.css.map": "/ShareYourPlant/static/css/main.44a65624.chunk.css.map",
+    "static/js/2.5e17764b.chunk.js.LICENSE.txt": "/ShareYourPlant/static/js/2.5e17764b.chunk.js.LICENSE.txt",
+    "static/media/ForestFoggy.jpg": "/ShareYourPlant/static/media/ForestFoggy.41fbb5ef.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.efe413ba.js",
     "static/css/2.e10332d9.chunk.css",
-    "static/js/2.46db7ea1.chunk.js",
-    "static/css/main.d0cb2cb0.chunk.css",
-    "static/js/main.8cf11ab0.chunk.js"
+    "static/js/2.5e17764b.chunk.js",
+    "static/css/main.44a65624.chunk.css",
+    "static/js/main.d9e2f40b.chunk.js"
   ]
 }
