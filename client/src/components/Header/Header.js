@@ -7,35 +7,39 @@ import '../../styles/BoxShadows.css'
 
 const Header = (props) => {
 
-    /*    const headerElements = [{
-            data: <PlantSvg {...props}/>,
-            id: 1
-            }, {
-            data: <Plus color={props.colorScheme.main} {...props}/>,
-            id: 2
+    const styles = {
+        dark: {
+            color: 'white'
         },
-            {data: <Fragezeichen {...props}/>,
-            id: 3
-            }]*/
+        light: {
+            color: 'back'
+        }
+    }
+
+    const returnStyle = () => {
+        return props.dark ? styles.dark : styles.light
+    }
+
+
 
     const headerElements = [{
-        data: <h2 style={{color: 'white'}}> HOME </h2>,
+        data: <h2 style={returnStyle()}> HOME </h2>,
         id: 1,
         route: ''
     }, {
-        data: <h2 style={{color: 'white'}}> API </h2>,
+        data: <h2 style={returnStyle()}> API </h2>,
         id: 2,
         route: 'api'
     }, {
-        data: <h2 style={{color: 'white'}}> Felix </h2>,
+        data: <h2 style={returnStyle()}> Felix </h2>,
         id: 3,
         route: 'Felix'
     }, {
-        data: <h2 style={{color: 'white'}}> Sunan </h2>,
+        data: <h2 style={returnStyle()}> Sunan </h2>,
         id: 4,
         route: 'Sunan'
     }, {
-        data: <h2 style={{color: 'white'}}> Franzi </h2>,
+        data: <h2 style={returnStyle()}> Franzi </h2>,
         id: 5,
         route: 'Franzi'
     }]
