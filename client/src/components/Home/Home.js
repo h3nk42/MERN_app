@@ -106,7 +106,6 @@ function Home() {
                         <div className='backgroundDiv'>
                             <img
                                 src={'https://i.ibb.co/b5DH4nY/djnglHD.jpg'}
-                                alt={'https://i.ibb.co/b5DH4nY/djnglHD.jpg'}
                                 className='backgroundImg'
                                 onLoad={() => {
                                     console.log('loading done')
