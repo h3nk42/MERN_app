@@ -10,14 +10,14 @@ const HeaderElement = (props) => {
         return hover ? (props.colorScheme.fourth) : ('')
     }
 
-    const toggleHover = () => {
-        setHover(!hover)
+    const toggleHover = (bool) => {
+        bool ?  setHover(true) : setHover(false)
     }
 
     return (
         <div
-            onMouseEnter={toggleHover}
-            onMouseLeave={toggleHover}
+            onMouseEnter={() => toggleHover(true)}
+            onMouseLeave={() => toggleHover(false)}
             onClick={() => {
                 history.push(`/${props.route}`)
             }}
