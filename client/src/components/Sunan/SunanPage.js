@@ -6,21 +6,9 @@ const SunanPage = () => {
 
     const [darkMode, setDarkMode] = useState(false);
 
-    const colorTheme = {
-        dark: {
-            mainColor: '#000',
-            textColor: '#fff',
-        },
-        light: {
-            mainColor: '#fff',
-            textColor: '#000',
-        }
-    }
-
-    const changeTheme = () => {
+    const enableDarkMode = () => {
         setDarkMode(!darkMode);
     }
-
 
     const colorScheme = {
         main: '#264653',
@@ -31,8 +19,7 @@ const SunanPage = () => {
     }
 
     const headerStyle = {
-        backgroundColor: colorTheme.mainColor,
-        color: colorTheme.textColor
+        backgroundColor: darkMode ? "black" : "white",
     }
 
     return (
@@ -43,7 +30,15 @@ const SunanPage = () => {
                 className='backgroundImg'
             />
             <div style={headerStyle}>
-                <Header colorScheme={colorScheme}/>
+                <Header dark={darkMode} colorScheme={colorScheme}/>
+            </div>
+            <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: "80vh",
+            }}>
+                <button style={{backgroundColor: "white"}} onClick={enableDarkMode}>Click me!</button>
             </div>
         </div>
     )

@@ -12,7 +12,7 @@ const Header = (props) => {
             color: 'white'
         },
         light: {
-            color: 'back'
+            color: 'black'
         }
     }
 
