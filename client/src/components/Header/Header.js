@@ -7,16 +7,16 @@ import '../../styles/BoxShadows.css'
 
 const Header = (props) => {
 
-/*    const headerElements = [{
-        data: <PlantSvg {...props}/>,
-        id: 1
-        }, {
-        data: <Plus color={props.colorScheme.main} {...props}/>,
-        id: 2
-    },
-        {data: <Fragezeichen {...props}/>,
-        id: 3
-        }]*/
+    /*    const headerElements = [{
+            data: <PlantSvg {...props}/>,
+            id: 1
+            }, {
+            data: <Plus color={props.colorScheme.main} {...props}/>,
+            id: 2
+        },
+            {data: <Fragezeichen {...props}/>,
+            id: 3
+            }]*/
 
     const headerElements = [{
         data: <h2 style={{color: 'white'}}> HOME </h2>,
@@ -26,22 +26,19 @@ const Header = (props) => {
         data: <h2 style={{color: 'white'}}> API </h2>,
         id: 2,
         route: 'api'
-    },
-        {
-            data: <h2 style={{color: 'white'}}> Felix </h2>,
-            id: 3,
-            route: 'Felix'
-    },
-        {
-            data: <h2 style={{color: 'white'}}> Sunan </h2>,
-            id: 4,
-            route: 'Sunan'
-        },
-        {
-            data: <h2 style={{color: 'white'}}> Franzi </h2>,
-            id: 5,
-            route: 'Franzi'
-        }]
+    }, {
+        data: <h2 style={{color: 'white'}}> Felix </h2>,
+        id: 3,
+        route: 'Felix'
+    }, {
+        data: <h2 style={{color: 'white'}}> Sunan </h2>,
+        id: 4,
+        route: 'Sunan'
+    }, {
+        data: <h2 style={{color: 'white'}}> Franzi </h2>,
+        id: 5,
+        route: 'Franzi'
+    }]
 
     let returnShadow = () => {
         return props.shadow ?
@@ -50,7 +47,7 @@ const Header = (props) => {
                 height: '80px',
                 width: '100vw'
             }
-        :
+            :
             {
 
                 height: '80px',
@@ -60,11 +57,11 @@ const Header = (props) => {
     }
 
     const renderHeaderElements =
-        headerElements.map( (e) =>
-        <HeaderElement key={e.id} val = {e.data} route={e.route} {...props} />
+        headerElements.map((e) =>
+            <HeaderElement key={e.id} val={e.data} route={e.route} {...props} />
         )
 
-    return(
+    return (
         <div
             className='flex flex-row items-center justify-center'
             style={returnShadow()}>

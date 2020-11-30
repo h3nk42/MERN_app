@@ -1,20 +1,20 @@
 import React, {useState, useEffect} from 'react';
 import socketIOClient from "socket.io-client";
-import { Layout } from 'antd';
-import { LoadingOutlined } from '@ant-design/icons';
+import {Layout} from 'antd';
+import {LoadingOutlined} from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import '../../styles/ImageStyleBg.css'
 import Items from "./Items";
 import Header from "../Header/Header";
 import PlantViewComponent from "./PlantViewComponent";
 import MyFooter from "../Footer/MyFooter";
-const { Content } = Layout
 
+const {Content} = Layout
 
 
 function Home() {
 //https://shareyourplant.herokuapp.com/api'http://localhost:3001/
-    const urls = ['https://shareyourplant.herokuapp.com/', 'http://localhost:5001/shareyourplant-b5c9a/us-central1/app/api' ]
+    const urls = ['https://shareyourplant.herokuapp.com/', 'http://localhost:5001/shareyourplant-b5c9a/us-central1/app/api']
     const [devMode, setDevMode] = useState(false)
     const [url, setUrl] = useState(urls[0])
     const [plantView, setPlantView] = useState(false)
@@ -24,14 +24,18 @@ function Home() {
 
     useEffect(() => {
         setSocket(socketIOClient(url))
-        return function cleanUp() { if (socket) socket.disconnect(); }
-    },[])
+        return function cleanUp() {
+            if (socket) socket.disconnect();
+        }
+    }, [])
 
-    const colorScheme = {main: '#264653',
+    const colorScheme = {
+        main: '#264653',
         second: '#2a9d8f',
         third: '#e9c46a',
         fourth: '#f4a261',
-        fifth: '#e76f51' }
+        fifth: '#e76f51'
+    }
 
     const renderContent = () => {
         return plantView ?
@@ -63,12 +67,12 @@ function Home() {
 
     const onChange = (bool) => {
         setDevMode(bool)
-        setUrl( devMode ?
+        setUrl(devMode ?
             urls[0]
-        :
+            :
             urls[1]
         )
-         setLoading(true)
+        setLoading(true)
     }
 
     const returnHiddenStyle = () => {
@@ -81,10 +85,11 @@ function Home() {
     const returnLoadingPage = () => {
         return imgLoading ?
             <div className='flex flex-column item-center justify-center' style={{
-                height:'100vh',
+                height: '100vh',
                 width: '100vw',
-                backgroundColor: 'white'}}>
-                <LoadingOutlined style={{ fontSize: '100px', color: 'black' }} />
+                backgroundColor: 'white'
+            }}>
+                <LoadingOutlined style={{fontSize: '100px', color: 'black'}}/>
             </div>
             :
             <div></div>
@@ -92,7 +97,8 @@ function Home() {
 
     return (
         <div className='wrappingContainer ' style={{
-            fontFamily: 'Quicksand, sans-serif'}}>
+            fontFamily: 'Quicksand, sans-serif'
+        }}>
             {returnLoadingPage()}
             <div style={returnHiddenStyle()}>
                 <Layout>
@@ -102,24 +108,26 @@ function Home() {
                                 src={'https://i.ibb.co/b5DH4nY/djnglHD.jpg'}
                                 alt={'https://i.ibb.co/b5DH4nY/djnglHD.jpg'}
                                 className='backgroundImg'
-                                onLoad={()=>{
-                                        console.log('loading done')
-                                        setImgLoading(false)
-                                    }
+                                onLoad={() => {
+                                    console.log('loading done')
+                                    setImgLoading(false)
+                                }
                                 }
                             />
                             <div className='flex flex-column items-center justify-start' style={{
                                 minHeight: '100vh',
                                 backgroundSize: '3000px 2000px',
-                                backgroundImage: `url('https://i.ibb.co/b5DH4nY/djnglHD.jpg')`}}>
+                                backgroundImage: `url('https://i.ibb.co/b5DH4nY/djnglHD.jpg')`
+                            }}>
 
-                                    <Header shadow={true} colorScheme={colorScheme}/>
+                                <Header shadow={true} colorScheme={colorScheme}/>
                                 <div style={{
                                     padding: '5% 5%',
-                                    marginBottom: 'auto'}}>
+                                    marginBottom: 'auto'
+                                }}>
                                     {renderContent()}
                                 </div>
-                                    <MyFooter colorScheme={colorScheme}/>
+                                <MyFooter colorScheme={colorScheme}/>
                             </div>
                         </div>
                     </Content>
