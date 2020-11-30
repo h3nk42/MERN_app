@@ -1,9 +1,26 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Header from "../Header/Header";
 import '../../styles/ImageStyleBg.css';
-import './styles/headerStyle.css';
 
 const SunanPage = () => {
+
+    const [darkMode, setDarkMode] = useState(false);
+
+    const colorTheme = {
+        dark: {
+            mainColor: '#000',
+            textColor: '#fff',
+        },
+        light: {
+            mainColor: '#fff',
+            textColor: '#000',
+        }
+    }
+
+    const changeTheme = () => {
+        setDarkMode(!darkMode);
+    }
+
 
     const colorScheme = {
         main: '#264653',
@@ -13,6 +30,11 @@ const SunanPage = () => {
         fifth: '#e76f51'
     }
 
+    const headerStyle = {
+        backgroundColor: colorTheme.mainColor,
+        color: colorTheme.textColor
+    }
+
     return (
         <div className='backgroundDiv'>
             <img
@@ -20,7 +42,7 @@ const SunanPage = () => {
                 alt={'The beauty of nature'}
                 className='backgroundImg'
             />
-            <div className='headerDiv'>
+            <div style={headerStyle}>
                 <Header colorScheme={colorScheme}/>
             </div>
         </div>
