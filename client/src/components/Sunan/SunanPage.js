@@ -1,14 +1,21 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Header from "../Header/Header";
 import '../../styles/ImageStyleBg.css';
 
 const SunanPage = () => {
 
-    const [darkMode, setDarkMode] = useState(false);
+    const storedDarkMode = localStorage.getItem("DARK_MODE");
+
+    const [darkMode, setDarkMode] = useState(storedDarkMode);
 
     const enableDarkMode = () => {
-        setDarkMode(!darkMode);
-    }
+        setDarkMode(darkMode === 'dark' ? 'light' : 'dark');
+    };
+
+    useEffect(() => {
+        console.log(`Is in dark mode? ${darkMode}`);
+        localStorage.setItem("DARK_MODE", darkMode);
+    }, [darkMode]);
 
     const colorScheme = {
         main: '#264653',
@@ -19,14 +26,22 @@ const SunanPage = () => {
     }
 
     const headerStyle = {
-        backgroundColor: darkMode ? "black" : "white",
+        fontFamily: 'Quicksand, sans-serif',
+        backgroundColor: darkMode === 'dark' ? "black" : "white"
+    }
+
+    const btnStyle = {
+        cursor: 'pointer',
+        fontFamily: 'Quicksand, sans-serif',
+        background: darkMode === 'dark' ? "black" : "white",
+        color: darkMode === 'dark' ? "white" : "black",
+        padding: '7px 20px'
     }
 
     return (
         <div className='backgroundDiv'>
             <img
                 src={'https://images.unsplash.com/photo-1591324822933-88ec781f419a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=967&q=80'}
-                alt={'The beauty of nature'}
                 className='backgroundImg'
             />
             <div style={headerStyle}>
@@ -38,7 +53,9 @@ const SunanPage = () => {
                 alignItems: 'center',
                 height: "80vh",
             }}>
-                <button style={{backgroundColor: "white"}} onClick={enableDarkMode}>Click me!</button>
+                <button style={btnStyle} onClick={enableDarkMode}>
+                    {darkMode === 'dark' ? "Switch to Light Mode" : "Switch to Dark Mode"}
+                </button>
             </div>
         </div>
     )

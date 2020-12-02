@@ -5,6 +5,7 @@ import React from "react";
 import FelixPage from "./components/Felix/FelixPage";
 import FranziPage from "./components/Franzi/FranziPage";
 import SunanPage from "./components/Sunan/SunanPage";
+import About from "./components/Sunan/pages/About";
 import ShowPlantData from './components/plantApi/Data/ShowPlantData'
 
 
@@ -17,6 +18,7 @@ const Router = () => {
                 <Route  path="/felix" render={props => <FelixPage {...props} />} />
                 <Route  path="/franzi" render={props => <FranziPage {...props} />} />
                 <Route  path="/sunan" render={props => <SunanPage {...props} />} />
+                <Route  path="/about" render={props => <About {...props} />} />
                 <Route  path="/api/showData" render={props => <ApiLanding state={false} {...props} />} />
             </Switch>
     )

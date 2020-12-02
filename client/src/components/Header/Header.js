@@ -17,10 +17,8 @@ const Header = (props) => {
     }
 
     const returnStyle = () => {
-        return props.dark ? styles.dark : styles.light
+        return props.dark === 'dark' ? styles.dark : styles.light
     }
-
-
 
     const headerElements = [{
         data: <h2 style={returnStyle()}> HOME </h2>,
@@ -42,6 +40,10 @@ const Header = (props) => {
         data: <h2 style={returnStyle()}> Franzi </h2>,
         id: 5,
         route: 'Franzi'
+    }, {
+        data: <h2 style={returnStyle()}> About </h2>,
+        id: 6,
+        route: 'About'
     }]
 
     let returnShadow = () => {
