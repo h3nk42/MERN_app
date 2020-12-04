@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import Header from "../../Header/Header";
+import Helmet from "react-helmet";
+import Header from "../Header/Header";
 
 const About = () => {
 
@@ -23,7 +24,10 @@ const About = () => {
     }
 
     return (
-        <div className='backgroundDiv'>
+        <div>
+            <Helmet>
+                <title>ShareYourPlant | About</title>
+            </Helmet>
             <div style={headerStyle}>
                 <Header dark={darkMode} colorScheme={colorScheme}/>
             </div>
@@ -31,4 +35,4 @@ const About = () => {
     )
 }
 
-export default About
+export default About;

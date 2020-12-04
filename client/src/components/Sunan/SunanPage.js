@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import Helmet from "react-helmet";
 import Header from "../Header/Header";
 import '../../styles/ImageStyleBg.css';
 
@@ -39,10 +40,14 @@ const SunanPage = () => {
     }
 
     return (
-        <div className='backgroundDiv'>
+        <div>
+            <Helmet>
+                <title>ShareYourPlant | Sunan</title>
+            </Helmet>
             <img
                 src={'https://images.unsplash.com/photo-1591324822933-88ec781f419a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=967&q=80'}
                 className='backgroundImg'
+                alt='The beauty of nature'
             />
             <div style={headerStyle}>
                 <Header dark={darkMode} colorScheme={colorScheme}/>

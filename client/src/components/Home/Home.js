@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Helmet from "react-helmet";
 import socketIOClient from "socket.io-client";
 import {Layout} from 'antd';
 import {LoadingOutlined} from '@ant-design/icons';
@@ -92,13 +93,16 @@ function Home() {
                 <LoadingOutlined style={{fontSize: '100px', color: 'black'}}/>
             </div>
             :
-            <div></div>
+            <div/>
     }
 
     return (
         <div className='wrappingContainer ' style={{
             fontFamily: 'Quicksand, sans-serif'
         }}>
+            <Helmet>
+                <title>ShareYourPlant</title>
+            </Helmet>
             {returnLoadingPage()}
             <div style={returnHiddenStyle()}>
                 <Layout>
