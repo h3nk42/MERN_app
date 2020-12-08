@@ -127,7 +127,7 @@ const ApiLanding = (props) => {
                      }
                      }
                 />
-                <Header dark={false} colorScheme={colorScheme}> </Header>
+                <Header dark='dark' colorScheme={colorScheme}> </Header>
                 <div style={styles.Content}>
                     <h1 className='noselect' style={styles.FontStyle}> PLANT API</h1>
                     {props.state ?

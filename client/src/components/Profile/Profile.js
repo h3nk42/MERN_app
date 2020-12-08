@@ -2,13 +2,7 @@ import React, {useState} from 'react';
 import Helmet from "react-helmet";
 import Header from "../Header/Header";
 
-const About = () => {
-
-    const [darkMode, setDarkMode] = useState(false);
-
-    const enableDarkMode = () => {
-        setDarkMode(!darkMode);
-    }
+const Profile = () => {
 
     const colorScheme = {
         main: '#264653',
@@ -19,20 +13,21 @@ const About = () => {
     }
 
     const headerStyle = {
-        fontFamily: 'Quicksand, sans-serif',
-        backgroundColor: darkMode ? "black" : "white"
+        background: "white"
     }
 
     return (
-        <div>
+        <div className="wrappingContainer" style={{
+            fontFamily: 'Quicksand, sans-serif'
+        }}>
             <Helmet>
-                <title>ShareYourPlant | About</title>
+                <title>ShareYourPlant | Profile</title>
             </Helmet>
             <div style={headerStyle}>
-                <Header dark={darkMode} colorScheme={colorScheme}/>
+                <Header colorScheme={colorScheme}/>
             </div>
         </div>
     )
 }
 
-export default About;
+export default Profile;
