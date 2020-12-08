@@ -1,10 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react';
 import Helmet from "react-helmet";
 import Header from "../Header/Header";
-import Layout from "./components/Layout";
-import '../../styles/ImageStyleBg.css';
 
-const SunanPage = () => {
+const Profile = () => {
 
     const colorScheme = {
         main: '#264653',
@@ -15,19 +13,21 @@ const SunanPage = () => {
     }
 
     const headerStyle = {
-        fontFamily: 'Quicksand, sans-serif',
+        background: "white"
     }
 
     return (
-        <Layout>
+        <div className="wrappingContainer" style={{
+            fontFamily: 'Quicksand, sans-serif'
+        }}>
             <Helmet>
-                <title>ShareYourPlant | Sunan</title>
+                <title>ShareYourPlant | Profile</title>
             </Helmet>
             <div style={headerStyle}>
                 <Header colorScheme={colorScheme}/>
             </div>
-        </Layout>
+        </div>
     )
 }
 
-export default SunanPage
+export default Profile;
