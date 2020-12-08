@@ -1,47 +1,38 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import HeaderElement from "./HeaderElement";
 import PlantSvg from "../../Assets/img/PlantSvg";
 import Plus from "../../Assets/img/Plus";
 import Fragezeichen from "../../Assets/img/Fragezeichen";
 import '../../styles/BoxShadows.css'
+import DarkModeSwitch from "../Sunan/components/DarkModeSwitch";
+import Layout from "../Sunan/components/Layout";
 
 const Header = (props) => {
 
-    const styles = {
-        dark: {
-            color: 'white'
-        },
-        light: {
-            color: 'black'
-        }
-    }
-
-    const returnStyle = () => {
-        return props.dark ? styles.dark : styles.light
-    }
-
-
-
     const headerElements = [{
-        data: <h2 style={returnStyle()}> HOME </h2>,
+        data: <h2> HOME </h2>,
         id: 1,
         route: ''
     }, {
-        data: <h2 style={returnStyle()}> API </h2>,
+        data: <h2> API </h2>,
         id: 2,
         route: 'api'
     }, {
-        data: <h2 style={returnStyle()}> Felix </h2>,
+        data: <h2> Felix </h2>,
         id: 3,
         route: 'Felix'
     }, {
-        data: <h2 style={returnStyle()}> Sunan </h2>,
+        data: <h2> Sunan </h2>,
         id: 4,
         route: 'Sunan'
     }, {
-        data: <h2 style={returnStyle()}> Franzi </h2>,
+        data: <h2> Franzi </h2>,
         id: 5,
         route: 'Franzi'
+    }, {
+        data: <h2> Profile </h2>,
+        id: 6,
+        route: 'Profile'
     }]
 
     let returnShadow = () => {
@@ -66,12 +57,15 @@ const Header = (props) => {
         )
 
     return (
-        <div
-            className='flex flex-row items-center justify-center'
-            style={returnShadow()}>
+        <Layout>
+            <div
+                className='flex flex-row items-center justify-center'
+                style={returnShadow()}>
 
-            {renderHeaderElements}
-        </div>
+                {renderHeaderElements}
+                <DarkModeSwitch/>
+            </div>
+        </Layout>
     )
 
 }
